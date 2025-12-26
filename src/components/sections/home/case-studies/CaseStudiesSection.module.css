@@ -1,0 +1,93 @@
+.section {
+  position: relative;
+  margin-top: -0.125em;
+  width: 100%;
+  --background: #182a2a;
+  --foreground: #fbf6c1;
+  --foreground-tertiary: #c4b59c;
+  background-color: var(--background, #182a2a);
+  padding: 4em 0;
+}
+
+.header {
+  width: 70%;
+}
+
+.headerTitle {
+  letter-spacing: -0.25rem;
+  text-transform: none;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 4.5rem;
+  line-height: 100%;
+  color: var(--foreground, #fbf6c1);
+}
+
+.container {
+  width: 100%;
+  padding: 4em;
+}
+
+.content .container {
+  display: flex;
+  gap: 2em;
+}
+
+.col {
+  flex: 1;
+}
+
+.primary {
+  text-transform: uppercase;
+  font-family: "NeueBit", "Nippo", sans-serif;
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 100%;
+  color: var(--foreground, #fbf6c1);
+}
+
+.copy {
+  width: 70%;
+}
+
+.copy p {
+  color: var(--foreground-tertiary, #c4b59c);
+}
+
+.copyTitle {
+  text-transform: none;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 5rem;
+  margin-bottom: 1em;
+  letter-spacing: -0.25rem;
+  color: var(--foreground, #fbf6c1);
+}
+
+@media (max-width: 900px) {
+  .header {
+    width: 100%;
+  }
+
+  .headerTitle {
+    letter-spacing: -0.1rem;
+    font-size: 2.75rem;
+  }
+
+  .container {
+    padding: 2em;
+  }
+
+  .content .container {
+    flex-direction: column-reverse;
+  }
+
+  .copy {
+    width: 100%;
+  }
+
+  .copyTitle {
+    font-size: 2.5rem;
+    letter-spacing: -0.1rem;
+  }
+}

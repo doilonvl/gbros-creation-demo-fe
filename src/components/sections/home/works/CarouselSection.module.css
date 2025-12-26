@@ -1,0 +1,162 @@
+.carouselSection {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  z-index: 1;
+  --foreground: #fbf6c1;
+}
+
+.carouselProject {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100svh;
+  clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+.carouselProjectBg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.carouselProjectBg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carouselOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgb(255 255 255 / 0.035),
+    rgb(255 255 255 / 0.035) 4px,
+    transparent 4px,
+    transparent 9px
+  );
+  background-size: 100% 9px;
+  animation: carouselOverlayPan 22s infinite linear;
+}
+
+.carouselGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.carouselProjectMain {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.carouselProjectMain img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carouselProjectHeader {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translate(0%, -50%);
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  z-index: 3;
+}
+
+.carouselProjectHeader > div {
+  flex: 1;
+}
+
+.carouselProjectHeader h2,
+.carouselProjectUrl a {
+  color: var(--foreground, #fbf6c1);
+}
+
+.carouselProjectHeader h2 {
+  text-transform: none;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 4rem;
+}
+
+.carouselProjectId,
+.carouselProjectTitle {
+  letter-spacing: -0.15rem;
+}
+
+.carouselProjectId {
+  text-align: center;
+}
+
+.carouselProjectUrl {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
+.carouselProjectInfo {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
+
+.carouselProjectOverlayLink {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+@keyframes carouselOverlayPan {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 0% -100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .carouselProjectMain {
+    width: 50%;
+    top: 35%;
+    left: 50%;
+  }
+
+  .carouselProjectHeader {
+    width: 100%;
+    top: 65%;
+    left: 0;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .carouselProjectHeader h2 {
+    font-size: 3rem;
+  }
+
+  .carouselProjectUrl {
+    top: 35%;
+  }
+
+  .carouselProjectId,
+  .carouselProjectTitle {
+    letter-spacing: -0.1rem;
+  }
+}

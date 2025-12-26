@@ -1,0 +1,42 @@
+.root {
+  display: flex;
+}
+
+.button {
+  width: 100px;
+  height: 40px;
+  background-color: var(
+    --music-toggle-bg,
+    var(--foreground-secondary, #1f2f2f)
+  );
+  border: 1px solid var(--music-toggle-border, transparent);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+
+.bars {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.label {
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--music-toggle-fg, var(--foreground, #fbf6c1));
+  -webkit-text-stroke: 0.25px var(--music-toggle-fg, var(--foreground, #fbf6c1));
+  text-transform: uppercase;
+  transition: color 200ms ease;
+}
+
+.bars svg path {
+  stroke: var(--music-toggle-fg, var(--foreground, #fbf6c1));
+  transition: stroke 200ms ease;
+}

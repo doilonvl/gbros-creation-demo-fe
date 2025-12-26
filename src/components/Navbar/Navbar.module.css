@@ -1,0 +1,158 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2em 4em;
+  z-index: 100000000;
+  --foreground: #fbf6c1;
+  --foreground-secondary: rgba(15, 15, 15, 0.55);
+  display: flex;
+  gap: 2em;
+  transition: transform 220ms ease;
+  will-change: transform;
+}
+
+.col {
+  flex: 1;
+  display: flex;
+  gap: 2em;
+  align-items: baseline;
+}
+
+.subCol {
+  flex: 1;
+}
+
+.logo h3 {
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: var(--foreground);
+  mix-blend-mode: difference;
+}
+
+.time p {
+  position: relative;
+  top: 0;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  color: var(--foreground);
+  -webkit-text-stroke: 0.25px var(--foreground);
+  mix-blend-mode: difference;
+}
+
+.navItems p {
+  position: relative;
+  top: 0.075rem;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  color: var(--foreground);
+  -webkit-text-stroke: 0.25px var(--foreground);
+  mix-blend-mode: difference;
+}
+
+.navItems p {
+  text-transform: none;
+  margin-bottom: 0.5rem;
+}
+
+.musicWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menuButton {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menuButtonContact {
+  width: auto;
+  text-align: right;
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.menuButtonContact p {
+  position: relative;
+  top: 0;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  color: var(--foreground);
+  -webkit-text-stroke: 0.25px var(--foreground);
+  mix-blend-mode: difference;
+  text-transform: uppercase;
+}
+
+.rootMenuTopRight .musicWrap {
+  align-items: baseline;
+}
+
+.rootLight {
+  --foreground: #1f1f1f;
+  --foreground-secondary: rgba(15, 15, 15, 0.12);
+}
+
+.rootLight .logo h3,
+.rootLight .time p,
+.rootLight .navItems p,
+.rootLight .menuButtonContact p {
+  mix-blend-mode: normal;
+}
+
+.rootDarkOverlay {
+  --foreground: #fbf6c1;
+  --foreground-secondary: rgba(15, 15, 15, 0.55);
+}
+
+.rootDarkOverlay .logo h3,
+.rootDarkOverlay .time p,
+.rootDarkOverlay .navItems p,
+.rootDarkOverlay .menuButtonContact p {
+  mix-blend-mode: difference;
+}
+
+.rootHidden {
+  transform: translateY(-120%);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .root {
+    padding: 2em;
+  }
+
+  .time,
+  .musicWrap {
+    display: none;
+  }
+
+  .navItems {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .menuButton {
+    width: auto;
+    text-align: right;
+    align-self: flex-end;
+  }
+
+  .rootMenuTopRight .musicWrap {
+    display: flex;
+  }
+
+  .rootMenuTopRight .menuButtonContact {
+    text-align: right;
+  }
+}

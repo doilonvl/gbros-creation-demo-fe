@@ -1,0 +1,142 @@
+.menu {
+  --nf-menu-bg: #222222;
+  --nf-menu-text: #f3efe6;
+  --nf-menu-accent: #ff1c1c;
+  --nf-menu-font: "Bebas Neue", "Oswald", sans-serif;
+  --nf-menu-footer-font: "Space Grotesk", "Inter", sans-serif;
+}
+
+.menu,
+.menu * {
+  box-sizing: border-box;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--nf-menu-bg);
+  color: var(--nf-menu-text);
+  padding: clamp(24px, 4vw, 56px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: stretch;
+  clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  pointer-events: none;
+  overflow: hidden;
+  min-height: 100svh;
+  will-change: clip-path;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: var(--nf-menu-footer-font);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.nav {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2em;
+  font-family: var(--nf-menu-font);
+  font-size: clamp(40px, 6vw, 96px);
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: left;
+  font-kerning: none;
+}
+
+.item {
+  opacity: 0;
+  transform: translateY(100%);
+  min-width: 10ch;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  white-space: pre;
+  display: inline-block;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-family: var(--nf-menu-footer-font);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  gap: 32px;
+}
+
+.footerItem {
+  display: flex;
+  gap: 0;
+}
+
+.footerLeft {
+  display: flex;
+  gap: 28px;
+}
+
+.footerRight {
+  margin-left: auto;
+  text-align: right;
+}
+
+.word,
+.char,
+.char > span {
+  display: inline-block;
+}
+
+.word {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.char {
+  display: inline-block;
+}
+
+@media (max-width: 900px) {
+  .overlay {
+    padding: 10vh 8vw 6vh;
+  }
+
+  .nav {
+    align-items: flex-start;
+    justify-self: start;
+    text-align: left;
+    font-size: clamp(32px, 8vw, 72px);
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .footerLeft {
+    gap: 18px;
+  }
+
+  .footerRight {
+    margin-left: 0;
+    text-align: left;
+  }
+}

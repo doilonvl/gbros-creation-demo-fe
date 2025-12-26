@@ -1,0 +1,193 @@
+.root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  --background: #182a2a;
+  --foreground: #fbf6c1;
+  --foreground-tertiary: #c4b59c;
+  background-color: var(--background, #182a2a);
+  margin-top: -0.125em;
+}
+
+.col {
+  flex: 1;
+}
+
+.itemsContent {
+  position: relative;
+  z-index: 2;
+}
+
+.itemsImages {
+  position: relative;
+}
+
+.item,
+.image {
+  width: 100%;
+  height: 100svh;
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 4em;
+}
+
+.itemTitle {
+  text-transform: none;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 4.5rem;
+  margin-bottom: 0.35em;
+  letter-spacing: -0.12rem;
+  line-height: 92%;
+  color: var(--foreground, #fbf6c1);
+}
+
+.primary {
+  text-transform: uppercase;
+  font-family: "NeueBit", "Nippo", sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 100%;
+  letter-spacing: 0.12rem;
+  color: var(--foreground, #fbf6c1);
+  margin-bottom: 0.75em;
+}
+
+.itemDescription {
+  color: var(--foreground-tertiary, #c4b59c);
+  font-size: 1.05rem;
+  line-height: 160%;
+  max-width: 38ch;
+}
+
+.image {
+  position: relative;
+  will-change: transform;
+  border-radius: 1em;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2);
+  transform-origin: top top;
+  will-change: transform;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgb(255 255 255 / 0.075),
+    rgb(255 255 255 / 0.075) 4px,
+    transparent 4px,
+    transparent 9px
+  );
+  background-size: 100% 9px;
+  animation: csOverlayPan 22s infinite linear;
+}
+
+.imageLink {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageLink span {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.imageLink a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  color: var(--foreground, #fbf6c1);
+}
+
+.itemInnerImage {
+  display: none;
+}
+
+.itemInnerLink {
+  display: none;
+}
+
+.linkIcon {
+  position: relative;
+  top: 0.125rem;
+}
+
+@keyframes csOverlayPan {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 0% -100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .itemsImages {
+    display: none;
+  }
+
+  .item {
+    height: max-content;
+  }
+
+  .itemContainer {
+    padding: 2em;
+  }
+
+  .itemTitle {
+    font-size: 2.6rem;
+    letter-spacing: -0.1rem;
+  }
+
+  .primary {
+    font-size: 1.1rem;
+    letter-spacing: 0.08rem;
+  }
+
+  .itemDescription {
+    font-size: 0.95rem;
+    line-height: 155%;
+    max-width: 100%;
+  }
+
+  .itemInnerImage {
+    display: block;
+    border-radius: 1em;
+    overflow: hidden;
+    height: 300px;
+    margin-bottom: 1em;
+  }
+
+  .itemInnerLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 2em 0;
+  }
+
+  .imageLink {
+    display: none;
+  }
+}

@@ -1,0 +1,91 @@
+.worksSection {
+  width: 100%;
+  --background-light: #eee1ce;
+  --foreground-light: #255956;
+  background-color: var(--background-light, #eee1ce);
+  color: var(--foreground-light, #255956);
+  padding: 4em 0;
+}
+
+.worksSectionHeader {
+  width: 70%;
+}
+
+.worksSectionHeaderTitle {
+  letter-spacing: -0.25rem;
+  text-transform: none;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 4.5rem;
+  line-height: 100%;
+  color: var(--foreground-light, #255956);
+}
+
+.worksSectionContainer {
+  width: 100%;
+  padding: 4em;
+}
+
+.worksSectionContent .worksSectionContainer {
+  display: flex;
+  gap: 2em;
+}
+
+.worksSectionCol {
+  flex: 1;
+}
+
+.worksSectionCopy {
+  width: 70%;
+}
+
+.worksSectionCopyTitle {
+  text-transform: none;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 5rem;
+  margin-bottom: 1em;
+  letter-spacing: -0.25rem;
+  color: var(--foreground-light, #255956);
+}
+
+.worksSectionPrimary {
+  text-transform: uppercase;
+  font-family: "NeueBit", "Nippo", sans-serif;
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 100%;
+  color: var(--foreground-light, #255956);
+}
+
+.worksSectionBody {
+  color: #726755;
+}
+
+@media (max-width: 900px) {
+  .worksSectionHeader {
+    width: 100%;
+  }
+
+  .worksSectionHeaderTitle {
+    letter-spacing: -0.1rem;
+    font-size: 2.75rem;
+  }
+
+  .worksSectionContainer {
+    padding: 2em;
+  }
+
+  .worksSectionContent .worksSectionContainer {
+    flex-direction: column-reverse;
+  }
+
+  .worksSectionCopy {
+    width: 100%;
+  }
+
+  .worksSectionCopyTitle {
+    font-size: 2.5rem;
+    letter-spacing: -0.1rem;
+  }
+}

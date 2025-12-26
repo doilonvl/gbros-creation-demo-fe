@@ -1,0 +1,35 @@
+.introMarquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 120px 0;
+  background: transparent;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.introMarqueeWrapper {
+  display: flex;
+  position: relative;
+  width: fit-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.introMarqueeContent {
+  display: inline-flex;
+}
+
+.introMarqueeTitle {
+  text-transform: uppercase;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 8rem;
+  line-height: 90%;
+  letter-spacing: -0.5rem;
+  white-space: nowrap;
+  padding-right: 50px;
+  will-change: transform;
+  color: var(--foreground, #f3ede2);
+}

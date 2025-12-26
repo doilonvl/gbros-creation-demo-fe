@@ -1,0 +1,159 @@
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+@font-face {
+  font-family: "Nippo";
+  src: url("/fonts/nippo/Nippo-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nippo";
+  src: url("/fonts/nippo/Nippo-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NeueBit";
+  src: url("/fonts/neue-bit/PPNeueBit-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NeueBit";
+  src: url("/fonts/neue-bit/PPNeueBit-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.heroSectionImage {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.heroSectionImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroSectionOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    rgb(255 255 255 / 0.075),
+    rgb(255 255 255 / 0.075) 4px,
+    transparent 4px,
+    transparent 9px
+  );
+  background-size: 100% 9px;
+  animation: heroSectionOverlayPan 22s infinite linear;
+}
+
+.heroSectionGradient {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.heroSectionContainer {
+  position: relative;
+  width: 100%;
+  padding: 4em;
+  z-index: 4;
+}
+
+.heroSectionCopy {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2em;
+}
+
+.heroSectionCopyMain {
+  width: 75%;
+}
+
+.heroSectionCopyAside {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.heroSectionSubtitle {
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  font-family: "NeueBit", "Nippo", sans-serif;
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 100%;
+  color: #fbf6c1;
+}
+
+.heroSectionTitle {
+  text-transform: uppercase;
+  font-family: "Nippo", "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 7rem;
+  line-height: 90%;
+  letter-spacing: -0.35rem;
+  color: #fbf6c1;
+}
+
+.heroSectionIcon {
+  width: 120px;
+}
+
+@keyframes heroSectionOverlayPan {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 0% -100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroSectionContainer {
+    padding: 3em 2em;
+  }
+
+  .heroSectionCopy {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 2em;
+  }
+
+  .heroSectionCopyMain {
+    width: 100%;
+  }
+
+  .heroSectionIcon {
+    width: 75px;
+  }
+
+  .heroSectionTitle {
+    font-size: 4rem;
+    letter-spacing: -0.25rem;
+  }
+
+  .heroSectionSubtitle {
+    font-size: 2rem;
+  }
+}

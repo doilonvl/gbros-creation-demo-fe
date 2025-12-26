@@ -1,0 +1,15 @@
+.transition {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: #fe0100;
+  transform: scaleY(0);
+  transform-origin: top;
+  will-change: transform;
+}

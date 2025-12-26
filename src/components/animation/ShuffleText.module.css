@@ -1,0 +1,25 @@
+.root {
+  display: block;
+}
+
+.root :global(.line) {
+  display: block;
+  width: 100%;
+}
+
+.root :global(.word) {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  margin-right: 0.25em;
+}
+
+.root :global(.word):last-child {
+  margin-right: 0;
+}
+
+.root :global(.char) {
+  display: inline-block !important;
+  text-align: center;
+  position: relative;
+  white-space: nowrap !important;
+}

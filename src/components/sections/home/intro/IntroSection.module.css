@@ -1,0 +1,158 @@
+.introSection {
+  position: relative;
+  --background: #182a2a;
+  --foreground: #fbf6c1;
+  --foreground-tertiary: #c4b59c;
+  background-color: var(--background, #182a2a);
+  overflow-x: hidden;
+}
+
+.introSectionGeoBg {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2.5);
+  transform-origin: center center;
+  opacity: 0.25;
+  z-index: 0;
+  will-change: transform;
+}
+
+.introSectionContent {
+  width: 100%;
+  padding-top: 20em;
+  padding-bottom: 4em;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.introSectionContainer {
+  width: 100%;
+  padding: 4em;
+  display: flex;
+  gap: 2em;
+  box-sizing: border-box;
+}
+
+.introSectionCol {
+  flex: 1;
+}
+
+.introSectionPrimary {
+  text-transform: uppercase;
+  font-family: "NeueBit", "Nippo", sans-serif;
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 100%;
+  color: var(--foreground, #fbf6c1);
+}
+
+.introSectionCopy {
+  width: 70%;
+}
+
+.introSectionCopy p {
+  margin-bottom: 4em;
+  font-family: "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 135%;
+  color: var(--foreground-tertiary, #c4b59c);
+}
+
+.introSectionPromptHeader h4,
+.introSectionPromptItemTitle h4 {
+  text-transform: uppercase;
+  font-family: "NeueBit", "Nippo", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 100%;
+  color: var(--foreground, #fbf6c1);
+}
+
+.introSectionPromptHeader h4 {
+  width: 50%;
+}
+
+.introSectionPromptResults {
+  margin-top: 2em;
+  display: flex;
+  gap: 2em;
+}
+
+.introSectionPromptItem {
+  flex: 1;
+}
+
+.introSectionPromptItemImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 1em;
+  overflow: hidden;
+  clip-path: polygon(
+    0 0,
+    80% 0,
+    100% 20%,
+    100% 70%,
+    100% 100%,
+    10% 100%,
+    0 90%,
+    0% 30%
+  );
+}
+
+.introSectionPromptItemImageImg {
+  object-fit: cover;
+}
+
+.introSectionScanOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgb(255 255 255 / 0.075),
+    rgb(255 255 255 / 0.075) 4px,
+    transparent 4px,
+    transparent 9px
+  );
+  background-size: 100% 9px;
+  animation: introSectionOverlayPan 22s infinite linear;
+}
+
+@keyframes introSectionOverlayPan {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 0% -100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .introSectionContainer {
+    padding: 2em;
+    flex-direction: column;
+    gap: 2em;
+  }
+
+  .introSectionCopy {
+    width: 100%;
+  }
+
+  .introSectionCopy p {
+    margin-bottom: 2em;
+  }
+
+  .introSectionPrompt {
+    margin-top: 6em;
+  }
+
+  .introSectionPromptHeader h4 {
+    width: 100%;
+  }
+
+  .introSectionPromptResults {
+    flex-direction: column;
+  }
+}

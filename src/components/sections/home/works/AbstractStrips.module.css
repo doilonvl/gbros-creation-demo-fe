@@ -1,0 +1,42 @@
+.abstractStrips {
+  width: 100%;
+  height: max-content;
+  --background-light: #eee1ce;
+  --background: #182a2a;
+  background-color: var(--background-light, #eee1ce);
+}
+
+.abstractStripsStrip {
+  width: 100%;
+  height: 15px;
+  background-color: var(--background, #182a2a);
+}
+
+.abstractStripsStrip:nth-child(1) {
+  margin-bottom: 5px;
+  height: 200px;
+}
+
+.abstractStripsStrip:nth-child(2) {
+  margin-bottom: 10px;
+}
+
+.abstractStripsStrip:nth-child(3) {
+  margin-bottom: 20px;
+}
+
+.abstractStripsStrip:nth-child(4) {
+  margin-bottom: 30px;
+}
+
+.abstractStripsStrip:nth-child(5) {
+  margin-bottom: 50px;
+}
+
+.abstractStripsStrip:nth-child(6) {
+  margin-bottom: 80px;
+}
+
+.abstractStripsStrip:nth-child(7) {
+  margin-bottom: 120px;
+}

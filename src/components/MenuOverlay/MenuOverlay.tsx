@@ -492,7 +492,7 @@ export default function NfMenuOverlay() {
               HOME
             </Link>
           </div>
-          <div className={styles.item}>
+          {/* <div className={styles.item}>
             <Link
               className={styles.link}
               href="/work"
@@ -500,7 +500,7 @@ export default function NfMenuOverlay() {
             >
               SHOWCASE
             </Link>
-          </div>
+          </div> */}
           <div className={styles.item}>
             <Link
               className={styles.link}

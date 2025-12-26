@@ -45,7 +45,7 @@ type ToggleTheme = keyof typeof toggleThemes;
 const defaultNavItems: NavItem[] = [
   { label: "About", sectionId: "intro" },
   { label: "Projects", sectionId: "case-studies" },
-  { label: "Services", sectionId: "works" },
+  { label: "Service Guide", sectionId: "works" },
 ];
 
 type LenisLike = {

@@ -16,6 +16,7 @@ class PixelatedVideoEffect {
   container: HTMLElement;
   video: HTMLVideoElement;
   canvasClassName?: string;
+  enableInteraction: boolean;
   isMobile = false;
   isDestroyed = false;
   time = 0;
@@ -43,11 +44,13 @@ class PixelatedVideoEffect {
   constructor(
     container: HTMLElement,
     video: HTMLVideoElement,
-    canvasClassName?: string
+    canvasClassName?: string,
+    enableInteraction = true
   ) {
     this.container = container;
     this.video = video;
     this.canvasClassName = canvasClassName;
+    this.enableInteraction = enableInteraction;
     this.isMobile = window.innerWidth < 1000;
     this.init();
   }
@@ -181,7 +184,7 @@ class PixelatedVideoEffect {
   }
 
   updateDataTexture() {
-    if (!this.dataTexture || this.isMobile) return;
+    if (!this.dataTexture || this.isMobile || !this.enableInteraction) return;
 
     const data = this.dataTexture.image.data as Float32Array;
     const size = this.settings.grid;
@@ -208,8 +211,7 @@ class PixelatedVideoEffect {
 
     for (let i = 0; i < size; i++) {
       for (let j = 0; j < size; j++) {
-        const distance =
-          (gridMouseX - i) ** 2 / aspect + (gridMouseY - j) ** 2;
+        const distance = (gridMouseX - i) ** 2 / aspect + (gridMouseY - j) ** 2;
         if (distance < maxDistSq) {
           const index = 4 * (i + size * j);
           const power = Math.min(10, maxDist / Math.sqrt(distance));
@@ -225,7 +227,7 @@ class PixelatedVideoEffect {
   }
 
   handlePointerMove(clientX: number, clientY: number) {
-    if (this.isMobile) return;
+    if (this.isMobile || !this.enableInteraction) return;
 
     const rect = this.container.getBoundingClientRect();
     const newX = (clientX - rect.left) / rect.width;
@@ -240,7 +242,7 @@ class PixelatedVideoEffect {
   }
 
   setupEvents() {
-    if (!this.isMobile) {
+    if (!this.isMobile && this.enableInteraction) {
       this.container.addEventListener("mousemove", this.onMouseMove);
     }
     window.addEventListener("resize", this.onResize);
@@ -293,21 +295,29 @@ class PixelatedVideoEffect {
   }
 }
 
+type PixelatedVideoOptions = {
+  canvasClassName?: string;
+  enableInteraction?: boolean;
+};
+
 export function useNfPixelatedVideo(
-  containerRef: React.RefObject<HTMLElement>,
-  videoRef: React.RefObject<HTMLVideoElement>,
-  canvasClassName?: string
+  containerRef: React.RefObject<HTMLElement | null>,
+  videoRef: React.RefObject<HTMLVideoElement | null>,
+  options?: string | PixelatedVideoOptions
 ) {
   useEffect(() => {
     const container = containerRef.current;
     const video = videoRef.current;
     if (!container || !video) return;
 
+    const resolvedOptions =
+      typeof options === "string" ? { canvasClassName: options } : options;
     const effect = new PixelatedVideoEffect(
       container,
       video,
-      canvasClassName
+      resolvedOptions?.canvasClassName,
+      resolvedOptions?.enableInteraction ?? true
     );
     return () => effect.destroy();
-  }, [containerRef, videoRef, canvasClassName]);
+  }, [containerRef, videoRef, options]);
 }

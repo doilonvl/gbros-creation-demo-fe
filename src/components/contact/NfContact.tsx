@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { useNfPixelatedVideo } from "@/components/effects/useNfPixelatedVideo";
 import styles from "./NfContact.module.css";
 
 type ScrambleSpan = HTMLSpanElement & {
@@ -198,10 +197,7 @@ function scrambleIn(
 }
 
 export default function NfContact() {
-  const rootRef = useRef<HTMLElement | null>(null);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  useNfPixelatedVideo(rootRef, videoRef, styles.canvas);
+  const rootRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -233,40 +229,32 @@ export default function NfContact() {
 
   return (
     <section className={styles.root} ref={rootRef} data-nav-theme="dark">
-      <video
-        ref={videoRef}
-        className={styles.video}
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
+      <video className={styles.video} autoPlay muted loop playsInline>
         <source src="/contact/contact-hero.mp4" type="video/mp4" />
       </video>
 
       <div className={styles.copy}>
         <div className={styles.main}>
           <div className={styles.col}>
-            <h4 className={styles.header}>Giới thiệu</h4>
-            <h4>
-              G-Bros. Creation chuyên cung cấp các dịch vụ quay phim, chụp ảnh
-              sản phẩm cho các doanh nghiệp.
-            </h4>
-            <h4>Trang · Sản phẩm/Dịch vụ</h4>
+            <h4 className={styles.header}>Gmedia Vietnam</h4>
+            <h4>Warsaw / Marseille</h4>
+            <h4>Block C, Foundry Street</h4>
+            <h4>48.8566 / 2.3522</h4>
+            <h4>FR-204X</h4>
           </div>
 
           <div className={styles.col}>
-            <h4>Hanoi, Vietnam</h4>
-            <h4>091 552 57 25</h4>
-            <h4>gbros.creation@gmail.com</h4>
-            <h4>flickr.com/photos/154261091@N04/albums</h4>
+            <h4>Drop a line</h4>
+            <h4>Inquiry@gmedia.com</h4>
+            <h4>Instagram / Facebook / LinkedIn</h4>
+            <h4>+(33) 714 202 4410</h4>
           </div>
         </div>
 
         <div className={styles.footer}>
           <div className={styles.footerInner}>
-            <p>G-Bros. Creation</p>
-            <p>{"\u00A9"} 2025 G-Bros. Creation</p>
+            <p>Developed by Doilonvl</p>
+            <p>{"\u00A9"} 2025 Gmedia Vietnam</p>
           </div>
         </div>
       </div>

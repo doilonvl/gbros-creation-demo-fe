@@ -239,7 +239,11 @@ export default function Navbar({
   } as CSSProperties;
 
   return (
-    <nav className={rootClassName} style={rootStyle}>
+    <nav
+      className={rootClassName}
+      style={rootStyle}
+      data-theme={toggleTheme}
+    >
       <div className={styles.col}>
         <div className={`${styles.subCol} ${styles.logo}`}>
           <Link href="/">

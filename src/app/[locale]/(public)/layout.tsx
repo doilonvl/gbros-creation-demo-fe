@@ -4,8 +4,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/request";
 import { Toaster } from "@/components/ui/sonner";
 import FooterExplosionGate from "@/components/layout/FooterExplosionGate";
-import Navbar from "@/components/Navbar/Navbar";
-import NfMenuOverlay from "@/components/MenuOverlay/MenuOverlay";
+import SiteHeader from "@/components/layout/SiteHeader";
 import { NfTransitionProvider } from "@/components/NfPageTransition";
 import ProgressBar from "@/components/ProgressBar/ProgressBar";
 // import Header from "@/components/layout/Header";
@@ -34,8 +33,7 @@ export default async function LocaleLayout({
         <Suspense>
           <ProgressBar />
         </Suspense>
-        <Navbar />
-        <NfMenuOverlay />
+        <SiteHeader locale={resolvedLocale} />
         {children}
         <FooterExplosionGate />
         <Toaster />

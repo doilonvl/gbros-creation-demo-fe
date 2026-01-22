@@ -30,5 +30,40 @@
       "sat": "Saturday",
       "sun": "Sunday"
     }
+  },
+  "blog": {
+    "metaTitle": "G-Bros Journal",
+    "metaDescription": "Studio updates, tips, and behind-the-scenes stories.",
+    "title": "Studio Journal",
+    "subtitle": "Latest updates from the G-Bros team.",
+    "featuredLabel": "Featured",
+    "emptyBody": "No posts yet. Please check back soon.",
+    "backToBlog": "Back to blogs",
+    "updatedLabel": "Updated",
+    "byLabel": "By",
+    "viewsLabel": "views",
+    "tocTitle": "Contents",
+    "latestTitle": "Latest posts",
+    "empty": "No recent posts."
+  },
+  "services": {
+    "metaTitle": "G-Bros Services",
+    "metaDescription": "Explore photo, video, styling, and design services.",
+    "title": "Services and Pricing",
+    "subtitle": "Browse service tiers, industries, and production scopes.",
+    "empty": "No services available yet."
+  },
+  "portfolios": {
+    "metaTitle": "G-Bros Portfolio",
+    "metaDescription": "Featured albums, case studies, and showreels.",
+    "title": "Portfolio",
+    "subtitle": "Explore albums, case studies, and showreels from G-Bros.",
+    "empty": "No portfolios available yet."
+  },
+  "contact": {
+    "metaTitle": "Contact G-Bros",
+    "metaDescription": "Get in touch with the G-Bros creative team.",
+    "title": "Contact and booking",
+    "subtitle": "Choose a service line and send a quick request."
   }
 }

@@ -15,6 +15,23 @@ import SectionHeading from "@/components/sections/public/SectionHeading";
 
 const BASE_URL = getSiteUrl();
 const DEFAULT_OG_IMAGE = `${BASE_URL}/Home/hero.jpg`;
+const PORTFOLIO_COLLAGE = [
+  "/Home/case-study-1.jpg",
+  "/Home/case-study-2.jpg",
+  "/Home/case-study-3.jpg",
+  "/Home/prompt-1.jpg",
+  "/Home/prompt-2.jpg",
+  "/Home/prompt-eg-1.jpg",
+  "/Home/prompt-eg-2.jpg",
+  "/Home/hero.jpg",
+];
+const PORTFOLIO_LAYOUT = [
+  "col-span-5 row-span-6 rotate-1",
+  "col-span-4 row-span-4 -rotate-1",
+  "col-span-3 row-span-5 rotate-2",
+  "col-span-4 row-span-5 -rotate-2",
+  "col-span-5 row-span-4 rotate-1",
+];
 
 const TYPE_TABS = [
   { value: undefined, label: { vi: "Tat ca", en: "All" } },
@@ -152,21 +169,33 @@ export default async function PortfoliosPage({
 
   return (
     <main className="min-h-screen bg-neutral-50">
-      <section className="relative overflow-hidden bg-neutral-900 text-white">
-        <div className="absolute inset-0">
-          <img
-            src="/Home/case-study-2.jpg"
-            alt="Portfolio"
-            className="h-full w-full object-cover opacity-60"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
-        </div>
-        <div className="relative mx-auto max-w-6xl px-4 pb-16 pt-28 md:px-6 lg:px-8">
-          <SectionHeading
-            kicker={locale === "en" ? "Portfolio" : "Portfolio"}
-            title={t("title")}
-            description={t("subtitle")}
-          />
+      <section
+        className="relative overflow-hidden"
+        data-nav-theme="light"
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-50 via-white to-neutral-100" />
+        <div className="relative mx-auto grid max-w-6xl gap-12 px-4 pb-16 pt-28 md:grid-cols-[1.1fr_0.9fr] md:px-6 lg:px-8">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.45em] text-neutral-400">
+              {locale === "en" ? "Portfolio" : "Portfolio"}
+            </p>
+            <h1 className="mt-5 text-4xl font-[var(--font-caladea)] uppercase tracking-[0.22em] text-neutral-900 md:text-6xl">
+              {t("title")}
+            </h1>
+            <p className="mt-4 max-w-xl text-sm text-neutral-600">
+              {t("subtitle")}
+            </p>
+          </div>
+          <div className="grid grid-cols-12 grid-rows-10 gap-4">
+            {PORTFOLIO_COLLAGE.slice(0, 5).map((src, index) => (
+              <div
+                key={`${src}-${index}`}
+                className={`relative overflow-hidden rounded-3xl border border-white/70 bg-white shadow-[0_25px_60px_-45px_rgba(15,23,42,0.35)] ${PORTFOLIO_LAYOUT[index % PORTFOLIO_LAYOUT.length]}`}
+              >
+                <img src={src} alt="Portfolio" className="h-full w-full object-cover" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import type { Locale } from "@/types/content";
 import { getSiteUrl } from "@/lib/env";
 import { getLocalePrefix } from "@/lib/routes";
-import SectionHeading from "@/components/sections/public/SectionHeading";
 import ContactForm from "@/components/sections/public/ContactForm";
 
 const BASE_URL = getSiteUrl();
@@ -48,75 +48,83 @@ export async function generateMetadata({
   };
 }
 
-const SERVICE_BLOCKS = [
-  {
-    key: "photo",
-    title: "Photo",
-    phone: "0900 000 000",
-    email: "hello@g-bros.com",
-  },
-  {
-    key: "video",
-    title: "Video",
-    phone: "0900 000 111",
-    email: "video@g-bros.com",
-  },
-  {
-    key: "styling",
-    title: "Styling",
-    phone: "0900 000 222",
-    email: "styling@g-bros.com",
-  },
-  {
-    key: "design",
-    title: "Design",
-    phone: "0900 000 333",
-    email: "design@g-bros.com",
-  },
-];
-
 export default async function ContactPage({ params }: PageParams) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "contact" });
+  const wall = [
+    "/Home/case-study-1.jpg",
+    "/Home/case-study-2.jpg",
+    "/Home/case-study-3.jpg",
+    "/Home/prompt-1.jpg",
+    "/Home/prompt-2.jpg",
+    "/Home/prompt-eg-1.jpg",
+    "/Home/prompt-eg-2.jpg",
+    "/Home/hero.jpg",
+  ];
 
   return (
-    <main className="min-h-screen bg-neutral-50">
-      <section className="mx-auto max-w-6xl px-4 pb-10 pt-28 md:px-6 lg:px-8">
-        <SectionHeading
-          kicker={locale === "en" ? "Contact" : "Lien he"}
-          title={t("title")}
-          description={t("subtitle")}
-        />
+    <main className="min-h-screen bg-neutral-50 text-neutral-900">
+      <section
+        className="mx-auto max-w-6xl px-4 pb-10 pt-28 md:px-6 lg:px-8"
+        data-nav-theme="light"
+      >
+        <p className="text-[11px] uppercase tracking-[0.45em] text-neutral-400">
+          {locale === "en" ? "Contact" : "Lien he"}
+        </p>
+        <h1 className="mt-6 text-4xl font-[var(--font-caladea)] uppercase tracking-[0.2em] md:text-6xl">
+          {locale === "en" ? "Let's create magic together" : "Cung tao ra dieu ky dieu"}
+        </h1>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-6 px-4 pb-16 md:grid-cols-2 md:px-6 lg:grid-cols-4 lg:px-8">
-        {SERVICE_BLOCKS.map((block) => (
-          <article
-            key={block.key}
-            className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.35)]"
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-neutral-500">
-              {block.title}
-            </p>
-            <p className="mt-3 text-sm text-neutral-700">{block.phone}</p>
-            <p className="text-sm text-neutral-700">{block.email}</p>
-            <div className="mt-4 flex flex-col gap-2 text-xs uppercase tracking-[0.25em] text-neutral-500">
-              <Link href={`${getLocalePrefix(locale)}/services?category=${block.key}`}>
-                {locale === "en" ? "Packages" : "Bang gia"}
-              </Link>
-              <Link href={`${getLocalePrefix(locale)}/portfolios`}>
-                {locale === "en" ? "Portfolio" : "Portfolio"}
-              </Link>
-              <Link href={`${getLocalePrefix(locale)}/blogs`}>
-                {locale === "en" ? "Blog" : "Blog"}
-              </Link>
-            </div>
-          </article>
-        ))}
+      <section className="mx-auto max-w-6xl px-4 pb-8 md:px-6 lg:px-8">
+        <Link
+          href="mailto:hello@gbros.vn"
+          className="group flex flex-wrap items-center gap-4 text-[10vw] font-semibold leading-none tracking-tight text-neutral-900 md:text-[8vw]"
+        >
+          hello@gbros.vn
+          <span className="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-neutral-900/40">
+            <ArrowUpRight className="h-5 w-5 translate-x-[-120%] text-neutral-900 transition duration-300 group-hover:translate-x-0" />
+          </span>
+        </Link>
+      </section>
+
+      <section className="mx-auto grid max-w-6xl gap-12 px-4 pb-20 md:grid-cols-[1.2fr_0.8fr] md:px-6 lg:px-8">
+        <ContactForm locale={locale} className="pt-4" />
+        <div className="space-y-6 text-sm text-neutral-600">
+          <p className="text-[11px] uppercase tracking-[0.35em] text-neutral-400">
+            {locale === "en" ? "Studio" : "Studio"}
+          </p>
+          <p>
+            G-Bros Creation Studio<br />
+            Ho Chi Minh City, Vietnam
+          </p>
+          <div className="space-y-2 text-[11px] uppercase tracking-[0.3em] text-neutral-600">
+            <Link href="https://www.facebook.com/gbros.creation" target="_blank">
+              Facebook
+            </Link>
+            <Link href="https://www.instagram.com/gbros.creation" target="_blank">
+              Instagram
+            </Link>
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-20 md:px-6 lg:px-8">
-        <ContactForm locale={locale} />
+        <p className="text-[11px] uppercase tracking-[0.45em] text-neutral-400">
+          {locale === "en" ? "Moodboard" : "Moodboard"}
+        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, index) => {
+            const src = wall[index % wall.length];
+            return (
+              <div
+                key={`${src}-${index}`}
+                className="overflow-hidden rounded-2xl border border-neutral-200 bg-white"
+              >
+                <img src={src} alt="Moodboard" className="h-full w-full object-cover" />
+              </div>
+            );
+          })}
+        </div>
       </section>
     </main>
   );

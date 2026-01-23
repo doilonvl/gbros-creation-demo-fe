@@ -175,3 +175,204 @@
     transition: none;
   }
 }
+
+@keyframes nf-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.nf-marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.nf-marquee-track {
+  display: inline-flex;
+  gap: 2rem;
+  animation: nf-marquee 18s linear infinite;
+  will-change: transform;
+}
+
+.nf-scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.nf-scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), #fff);
+  animation: nf-scroll-line 1.6s ease-in-out infinite;
+}
+
+@keyframes nf-scroll-line {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body[data-cursor="true"] {
+    cursor: none;
+  }
+
+  body[data-cursor="true"] * {
+    cursor: none;
+  }
+
+  .nf-cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    will-change: transform;
+    mix-blend-mode: difference;
+  }
+
+  .nf-cursor-dot {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: #fff;
+    transition: transform 250ms ease;
+  }
+
+  .nf-cursor-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 250ms ease, opacity 250ms ease, background 250ms ease;
+    color: #111;
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0);
+  }
+
+  .nf-cursor-label {
+    opacity: 0;
+    transition: opacity 200ms ease;
+    font-weight: 600;
+  }
+
+  .nf-cursor[data-mode="link"] .nf-cursor-dot {
+    transform: scale(0.2);
+  }
+
+  .nf-cursor[data-mode="link"] .nf-cursor-ring {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .nf-cursor[data-mode="view"] .nf-cursor-dot {
+    transform: scale(0.1);
+  }
+
+  .nf-cursor[data-mode="view"] .nf-cursor-ring {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+    background: rgba(255, 255, 255, 0.9);
+    color: #111;
+  }
+
+  .nf-cursor[data-mode="view"] .nf-cursor-label {
+    opacity: 1;
+  }
+}
+
+.nf-grain {
+  position: absolute;
+  inset: -200%;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+  animation: nf-grain-shift 12s steps(2) infinite;
+}
+
+@keyframes nf-grain-shift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-10%, -10%, 0);
+  }
+}
+
+.nf-magnetic {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: #fff;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 250ms ease, background 250ms ease, color 250ms ease;
+}
+
+.nf-magnetic:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: #fff;
+  color: #111;
+}
+
+.nf-magnetic:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 4px;
+}
+
+.nf-magnetic--dark {
+  border-color: rgba(15, 23, 42, 0.4);
+  color: #111;
+}
+
+.nf-magnetic--dark:hover {
+  background: #111;
+  color: #fff;
+}
+
+.nf-magnetic--dark:focus-visible {
+  outline-color: rgba(15, 23, 42, 0.45);
+}

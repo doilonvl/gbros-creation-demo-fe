@@ -20,94 +20,59 @@ export default function ContactForm({ locale, className }: ContactFormProps) {
   return (
     <form
       onSubmit={onSubmit}
-      className={cn(
-        "rounded-3xl border border-neutral-200 bg-white p-6 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.35)]",
-        className
-      )}
+      className={cn("space-y-6", className)}
     >
-      <h3 className="text-lg font-semibold text-neutral-900">
-        {locale === "en" ? "Book a service" : "Dang ky dich vu"}
-      </h3>
-      <p className="mt-2 text-sm text-neutral-600">
-        {locale === "en"
-          ? "Leave your info and we will reach out quickly."
-          : "De lai thong tin, G-Bros se lien he nhanh."}
-      </p>
+      <div>
+        <p className="text-[11px] uppercase tracking-[0.4em] text-neutral-400">
+          {locale === "en" ? "Project inquiry" : "Gui yeu cau"}
+        </p>
+        <h3 className="mt-3 text-2xl font-[var(--font-caladea)] uppercase tracking-[0.18em] text-neutral-900">
+          {locale === "en" ? "Tell us about your vision" : "Ke ve y tuong"}
+        </h3>
+      </div>
 
-      <div className="mt-6 grid gap-4 md:grid-cols-2">
+      <div className="grid gap-5">
         <input
           name="name"
           required
           placeholder={locale === "en" ? "Full name" : "Ho va ten"}
-          className="rounded-2xl border border-neutral-200 px-4 py-3 text-sm"
-        />
-        <input
-          name="phone"
-          required
-          placeholder={locale === "en" ? "Phone" : "So dien thoai"}
-          className="rounded-2xl border border-neutral-200 px-4 py-3 text-sm"
+          className="w-full border-b border-neutral-300 bg-transparent py-3 text-sm font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
         />
         <input
           name="email"
-          placeholder={
-            locale === "en" ? "Email (optional)" : "Email (tuy chon)"
-          }
-          className="rounded-2xl border border-neutral-200 px-4 py-3 text-sm"
+          required
+          placeholder={locale === "en" ? "Email" : "Email"}
+          className="w-full border-b border-neutral-300 bg-transparent py-3 text-sm font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
         />
-        <select
-          name="service"
-          className="rounded-2xl border border-neutral-200 px-4 py-3 text-sm"
-        >
-          <option value="">
-            {locale === "en" ? "Select service" : "Chon dich vu"}
-          </option>
-          <option value="photo">Photo</option>
-          <option value="video">Video</option>
-          <option value="styling">Styling</option>
-          <option value="design">Design</option>
-        </select>
         <input
-          name="package"
-          placeholder={
-            locale === "en" ? "Package (optional)" : "Goi (tuy chon)"
-          }
-          className="rounded-2xl border border-neutral-200 px-4 py-3 text-sm md:col-span-2"
+          name="budget"
+          placeholder={locale === "en" ? "Estimated budget" : "Ngan sach du kien"}
+          className="w-full border-b border-neutral-300 bg-transparent py-3 text-sm font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
         />
         <textarea
           name="message"
           rows={4}
-          placeholder={locale === "en" ? "Your message" : "Noi dung"}
-          className="rounded-2xl border border-neutral-200 px-4 py-3 text-sm md:col-span-2"
+          placeholder={locale === "en" ? "Project details" : "Mo ta du an"}
+          className="w-full border-b border-neutral-300 bg-transparent py-3 text-sm font-mono text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
         />
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center gap-3">
+      <div className="flex items-center gap-6">
         <button
           type="submit"
-          className="rounded-full bg-neutral-900 px-5 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-white"
+          className="nf-magnetic nf-magnetic--dark"
         >
-          {locale === "en" ? "Send request" : "Gui yeu cau"}
+          {locale === "en" ? "Send" : "Gui"}
         </button>
-        <a
-          href="https://www.facebook.com"
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-full border border-neutral-300 px-4 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-neutral-700"
-        >
-          Facebook
-        </a>
-        <a
-          href="https://www.instagram.com"
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-full border border-neutral-300 px-4 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-neutral-700"
-        >
-          Instagram
-        </a>
+        <div className="text-[10px] uppercase tracking-[0.35em] text-neutral-400">
+          {locale === "en"
+            ? "We respond within 48 hours."
+            : "Hoi dap trong 48 gio."}
+        </div>
       </div>
 
       {submitted ? (
-        <p className="mt-4 text-sm text-emerald-600">
+        <p className="text-sm text-emerald-600">
           {locale === "en"
             ? "Thanks! We will contact you shortly."
             : "Cam on! Chung toi se lien he som."}

@@ -50,6 +50,10 @@ export default function VideoPopup({ video, className }: VideoPopupProps) {
             src={video.thumbnail}
             alt={video.title}
             className="absolute inset-0 h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
+            fetchPriority="low"
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           />
         ) : null}
         <div className="relative z-10 flex items-center gap-3 rounded-full border border-white/40 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] backdrop-blur">
